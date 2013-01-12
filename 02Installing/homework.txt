@@ -2,18 +2,28 @@ Homework for Chapter 2 of Learning MySQL (2006 edition), from p. 94:
 
 Exercises:
 1) What is command completion?
+	The ability of the shell to comlete the names of files when it can determine a distinct file.  Pressing tab will complete the remainder of the filename or the available filenames that could match the text that's already been typed.
 
 2) What are the relative advantages of installing MySQL using the package,
  directory archive (tarball or "no-install", or compiled methods?
+This is much quicker than installing from source and there are not requirements for the development environment to build the software.  The package also often include manual configuration tasks such as adding the binaries to the path.  The build options have been vetted and tested more thoroughly than an end user can usually do.
 
 3) How do you verify the integrity of downloaded packages?
+	check md5sum/package signatures of binaries or source tarballs
 
 4) How do you add the MySQL bin directory to the operating system path?
+	It depends.  For system-wide changes, on linux you can add commands to /etc/profile.d/mysql.sh or /etc/profile.d/mysql.csh for bourne and C shells.  The file must be executable.  For an individual user, the path can be edited in ~/.bashrc, ~/.bash_profile for bourne shells, ~/.cshrc or ~/.tcshrc for C shells.  Bourne would have a line such as
+export PATH="/usr/local/mysql/bin":${PATH}
+
 
 Additional Exercises (not in the book): 
 1) Document how you installed MySQL and any issues you came across with installation. 
  (The goal is to be easy to install it again on a similar machine.)
+	on OS X or linux, download the precompiled files, expand in /usr/local, symlink /usr/local/mysql to /usr/local/mysqlX.Y, add mysql user if not already presnt, cd /usr/local/mysql, create my.cnf file if desired, su mysql -c 'scripts/mysql_install_db', start database with sudo /usr/local/mysql/support-files/mysql.server start, set root password
 
 2) Document where important files should be.
+	system assumes that my.cnf is in /etc unless --defaults-file is specified
+	usually binaries are available in /usr/local/mysql/bin unless they are in /usr/bin
+	data files would be in /usr/local/mysql/data or /var/lib/mysql
 
 Do not forget to do a pull request when your homework is complete.
