@@ -1,9 +1,13 @@
 1. What do we mean when we say that MySQL has a client-server architecture?
+The server portion runs independently and provides information requested by the client.  The client is a separate piece that runs on the same or different system and requests and recieves the responses from the server.
 
 2. Use the monitor help to look up information on the SELECT statement. (We’ll discuss SELECT in detail in Chapter 5.)
+help SELECT;
 
 3. What is the difference between using the monitor in interactive mode and using
 the monitor in batch mode?
+Interactive mode runs the command that is executed and then returns to the prompt.  Batch mode is executed by the SOURCE command to run a series of commands from an external command.  The difference is a bit arbitrary since SOURCE is just an interactive command in of itself.  There is a difference in behavior when running mysql with the -e parameter in that --force is disabled
 
 4. What do the monitor user, password, and database options do?
+select the user password and database being used.
 
