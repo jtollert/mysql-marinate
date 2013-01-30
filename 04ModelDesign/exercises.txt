@@ -1,12 +1,16 @@
 1. When would you use a weak entity?
+When there is data that cannot exist outside of it's relationship with another value in the database
 
 
 2. Is it better to use entities instead of attributes?
+it depends. Entities are better for data that is has direct interest to the database, has components or it's own, can have multiple instances, or could be non-existant or unknown.
 
 
 3. Alter and extend the music database ER model so that it can store 
 compilations, where a compilation is an album that contains tracks by two 
 or more different artists.
+
+Move the Artist entity to be related to the Track entity. If we have the information, create a Compiler or Producer Entity that takes the place of the current Artist entity.
 
 4. Create an ER diagram for an online media store using the following requirements:
  - There are two types of product: music CDs and video DVDs.
