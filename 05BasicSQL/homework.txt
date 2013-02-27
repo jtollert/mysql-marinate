@@ -13,7 +13,20 @@ in the WHERE. If you put the join clauses in the JOIN part, it's way more readab
 
 1) Use one or more SELECT statements to find out how many tracks are on New Order's Brotherhood album.
 
+SELECT count(*) FROM track 
+	INNER JOIN album ON (track.album_id=album.album_id)
+	INNER JOIN artist ON (artist.artist_id=track.artist_id) 
+	WHERE 
+	artist_name="New Order";
+	AND 
+	album_name="Brotherhood" 
+
 2) Using a join, list the albums that we own by the band New Order
+
+SELECT album_name FROM album 
+	INNER JOIN artist ON (album.artist_id=artist.artist_id) 
+	WHERE 
+	artist.artist_name="New Order";
 
 3) With INSERT statements, add the artist Leftfield to the database. For this new artist, add the album "Leftism" that has
 the following tracks:
@@ -31,9 +44,34 @@ k. 21st Century Poem (Time: 5.42)
 l. Bonus Track (Time: 1.22)
 
 The answer to this question should be the INSERT statement(s).
+INSERT INTO artist (artist_id,artist_name) VALUES (7,"Leftfield");
+INSERT INTO album (artist_id,album_id,album_name) VALUES (7,8,"Leftism");
+INSERT INTO track (artist_id,album_id,track_id,track_name,time) 
+VALUES
+(7,8,1,"Release the Pressure",7.39),
+(7,8,2,"Afro-Melt",7.33),
+(7,8,3,"Melt",5.21),
+(7,8,4,"Song of Life",6.55),
+(7,8,5,"Original",6.00),
+(7,8,6,"Black Flute",3.46),
+(7,8,7,"Space Shanty",7.15),
+(7,8,8,"Inspection Check One",6.30),
+(7,8,9,"Storm 3000",5.44),
+(7,8,10,"Open Up",6.52),
+(7,8,11,"21st Century Poem",5.42),
+(7,8,12,"Bonus Track",1.22);
+
 
 4) How long in minutes is the Leftism album you added in Question 3? Hint: use the
 SUM() aggregate function.
+SELECT SUM(time) FROM track WHERE album_id=8;
++-----------+
+| sum(time) |
++-----------+
+|     67.99 |
++-----------+
+
 
 5) Change the time for the Original track on the Leftism album to 6.22.
+UPDATE track SET time=6.22 WHERE album_id=8 AND track_name="Original";
 
